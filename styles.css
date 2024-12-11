@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+}
+
+
+
+header h1 {
+    margin: 0;
+}
+
+/* Kontejner pro menu a obsah */
+.container {
+    display: flex;
+    margin-top: 0; /* Odsazení pod hlavičkou */
+}
+
+/* Navigační menu */
+nav#menu {
+    position: fixed;
+    top: 0px; /* Pod hlavičkou */
+    left: 0;
+    width: 200px;
+    height: 100vh; /* Výška obrazovky */
+    background-color: #f8f9fa;
+    overflow-y: auto; /* Posuvník, pokud je menu delší než obrazovka */
+    border-right: 1px solid #ddd;
+    padding: 10px;
+    z-index: 999;
+}
+
+/* Obsah stránky */
+main#clanky {
+    margin-left: 220px; /* Odsazení kvůli pevnému menu */
+    padding: 20px;
+}
+
+/* Styl odkazů v menu */
+nav#menu a {
+    display: block;
+    padding: 5px 10px;
+    color: #007bff;
+    text-decoration: none;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+nav#menu a:hover {
+    background-color: #e9ecef;
+}
+
+#clanky {
+    flex: 1;
+    max-width: 800px;
+    margin: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clanek {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.clanek:last-child {
+    border-bottom: none;
+}
+
+.clanek h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #007acc;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #333;
+    color: #fff;
+}
+pre {
+    background: #f4f4f4;
+    padding: 10px;
+    border-left: 4px solid #007acc;
+    overflow-x: auto;
+    font-family: monospace;
+    margin-bottom: 10px;
+}
+
+pre code {
+    display: block;
+}
+
+.vysledek {
+    width: 100%;
+    height: 100px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.popisek {
+    font-style: italic;
+    color: #555;
+}
+
+.code-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.copy-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.copy-button:hover {
+    background-color: #0056b3;
+}
