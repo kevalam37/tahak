@@ -111,3 +111,4 @@ searchInput.addEventListener("input", () => {
 
 // První vykreslení menu
 renderMenu();
+//konec
