@@ -15,54 +15,89 @@ clanky.forEach(clanek => {
     p.textContent = clanek.obsah;
     article.appendChild(p);
 
-    // Okno s kódem
-    const codeContainer = document.createElement("div");
-    codeContainer.className = "code-container";
+    if (clanek.kod) {
+        const codeContainer = document.createElement("div");
+        codeContainer.className = "code-container";
 
-    // Tlačítko "Zkopírovat kód"
-    const copyButton = document.createElement("button");
-    copyButton.textContent = "Zkopírovat kód";
-    copyButton.className = "copy-button";
+        const copyButton = document.createElement("button");
+        copyButton.textContent = "Zkopírovat kód";
+        copyButton.className = "copy-button";
 
-    // Akce tlačítka
-    copyButton.addEventListener("click", () => {
-        navigator.clipboard.writeText(clanek.kod).then(() => {
-            copyButton.textContent = "Zkopírováno!";
-            setTimeout(() => copyButton.textContent = "Zkopírovat kód", 2000);
-        }).catch(() => {
-            copyButton.textContent = "Chyba kopírování";
+        copyButton.addEventListener("click", () => {
+            navigator.clipboard.writeText(clanek.kod).then(() => {
+                copyButton.textContent = "Zkopírováno!";
+                setTimeout(() => copyButton.textContent = "Zkopírovat kód", 2000);
+            }).catch(() => {
+                copyButton.textContent = "Chyba kopírování";
+            });
         });
-    });
 
-    // Kód v okně
-    const pre = document.createElement("pre");
-    const code = document.createElement("code");
-    code.className = "language-html"; // Změna podle jazyka
-    code.textContent = clanek.kod;
-    pre.appendChild(code);
+        const pre = document.createElement("pre");
+        const code = document.createElement("code");
+        code.className = "language-html";
+        code.textContent = clanek.kod;
+        pre.appendChild(code);
 
-    codeContainer.appendChild(copyButton);
-    codeContainer.appendChild(pre);
-    article.appendChild(codeContainer);
+        codeContainer.appendChild(copyButton);
+        codeContainer.appendChild(pre);
+        article.appendChild(codeContainer);
+    }
 
-    // Výsledek kódu (iframe)
-    const iframe = document.createElement("iframe");
-    iframe.className = "vysledek";
-    iframe.srcdoc = clanek.kod;
-    iframe.sandbox = "allow-scripts";
-    article.appendChild(iframe);
+    if (clanek.kod) {
+        const iframe = document.createElement("iframe");
+        iframe.className = "vysledek";
+        iframe.srcdoc = clanek.kod;
+        iframe.sandbox = "allow-scripts";
+        article.appendChild(iframe);
+    }
 
-    const popisek = document.createElement("p");
-    popisek.className = "popisek";
-    popisek.textContent = clanek.popisek;
-    article.appendChild(popisek);
+    if (clanek.popisek) {
+        const popisek = document.createElement("p");
+        popisek.className = "popisek";
+        popisek.textContent = clanek.popisek;
+        article.appendChild(popisek);
+    }
 
     clankyContainer.appendChild(article);
-
-    const link = document.createElement("a");
-    link.href = `#${clanek.id}`;
-    link.textContent = clanek.nadpis;
-    menuContainer.appendChild(link);
 });
 
+// Funkce pro generování a filtrování menu
+function renderMenu(filter = "") {
+    menuContainer.innerHTML = ""; // Vyprázdnění menu
 
+    // Seřazení článků podle nadpisu
+    const sortedClanky = clanky
+        .slice()
+        .sort((a, b) => a.nadpis.localeCompare(b.nadpis));
+
+    // Filtrace podle vyhledávání
+    const filteredClanky = sortedClanky.filter(clanek =>
+        clanek.nadpis.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    filteredClanky.forEach(clanek => {
+        const link = document.createElement("a");
+        link.href = `#${clanek.id}`;
+        link.textContent = clanek.nadpis;
+        menuContainer.appendChild(link);
+    });
+}
+
+// Vytvoření vyhledávacího pole
+const searchInput = document.createElement("input");
+searchInput.type = "text";
+searchInput.placeholder = "Hledat...";
+searchInput.className = "search-box";
+
+// Přidání vyhledávání nad menu (pokud menu existuje)
+if (menuContainer) {
+    menuContainer.parentNode.insertBefore(searchInput, menuContainer);
+}
+
+// Poslouchá změny v textovém poli a filtruje menu
+searchInput.addEventListener("input", () => {
+    renderMenu(searchInput.value);
+});
+
+// První vykreslení menu
+renderMenu();

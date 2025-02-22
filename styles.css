@@ -5,38 +5,67 @@ body {
     line-height: 1.6;
     background-color: #f4f4f9;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden; /* Zabrání rolování celé stránky */
 }
 
+header {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
 
-
-header h1 {
-    margin: 0;
+.container {
+    display: flex;
+    flex-grow: 1;
+    height: 100vh;
 }
 
 /* Kontejner pro menu a obsah */
 .container {
     display: flex;
-    margin-top: 0; /* Odsazení pod hlavičkou */
+    flex-direction: column;
+    height: 100vh; /* Celková výška */
+    
+}
+
+/* Vyhledávací pole nad menu */
+.search-box {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px; /* Mezera mezi vyhledávacím polem a menu */
+    border: 1px solid #ccc;
+   
+    font-size: 14px;
+    box-sizing: border-box; /* Zajištění, že padding nebude ovlivňovat šířku */
 }
 
 /* Navigační menu */
 nav#menu {
-    position: fixed;
-    top: 0px; /* Pod hlavičkou */
-    left: 0;
     width: 200px;
-    height: 100vh; /* Výška obrazovky */
+    height: calc(100vh - 40px);
     background-color: #f8f9fa;
-    overflow-y: auto; /* Posuvník, pokud je menu delší než obrazovka */
-    border-right: 1px solid #ddd;
     padding: 10px;
-    z-index: 999;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+    position: fixed; /* Fixní umístění zajistí, že bude stále vlevo */
+    left: 0;
+    top: 40px;
+    z-index: 1000;
 }
 
-/* Obsah stránky */
 main#clanky {
-    margin-left: 220px; /* Odsazení kvůli pevnému menu */
-    padding: 20px;
+    flex-grow: 1;
+    padding: 0px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-left: 220px; /* Odsazení od menu */
+    overflow-y: auto; /* Rolování pouze v tomto okně */
+    height: calc(100vh - 200px); /* Výška odečtená o vyhledávací pole */
+    margin-top: -20px;
 }
 
 /* Styl odkazů v menu */
@@ -53,24 +82,11 @@ nav#menu a:hover {
     background-color: #e9ecef;
 }
 
-#clanky {
-    flex: 1;
-    max-width: 800px;
-    margin: 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Ostatní styly pro články a kód */
 .clanek {
     margin-bottom: 20px;
     padding: 15px;
     border-bottom: 1px solid #ddd;
-}
-
-.clanek:last-child {
-    border-bottom: none;
 }
 
 .clanek h2 {
@@ -85,6 +101,7 @@ footer {
     background: #333;
     color: #fff;
 }
+
 pre {
     background: #f4f4f4;
     padding: 10px;
@@ -92,10 +109,6 @@ pre {
     overflow-x: auto;
     font-family: monospace;
     margin-bottom: 10px;
-}
-
-pre code {
-    display: block;
 }
 
 .vysledek {
