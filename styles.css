@@ -40,7 +40,11 @@ header {
     border: 1px solid #ccc;
    
     font-size: 14px;
-    box-sizing: border-box; /* Zajištění, že padding nebude ovlivňovat šířku */
+    box-sizing: border-box; /* Zajištění, že padding nebude ovlivňovat 
+    šířku */
+    max-width: 400px; /* Nebude přehnaně široké */
+    display: block; /* Zajistí, že se správně vykreslí */
+    margin: 10px auto; /* Vycentrování */
 }
 
 /* Navigační menu */
