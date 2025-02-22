@@ -5,7 +5,7 @@ const clanky = [
         id: "programovani",
         kod: `console.log('Ahoj světe!');`,
         popisek: "Tento kód zobrazí v konzoli text 'Ahoj světe!'.",
-        images: ["images/01.jpg", "images/02.jpg"],
+        images: ["tahak/images/01.jpg", "images/02.jpg"],
     },
     {
         nadpis: "Proč používat GitHub Pages?",
@@ -36,7 +36,7 @@ const clanky = [
         id: "dynamicke-clanky",
         kod: `document.body.innerHTML = "<h1>Dynamický obsah</h1>";`,
         popisek: "Tento kód přepíše obsah stránky a zobrazí nadpis 'Dynamický obsah'.",
-        images: ["images/07.jpg"],
+        images: ["tahak/images/07.jpg"],
     }
 
     
