@@ -46,6 +46,7 @@ header {
     display: block; /* Zajistí, že se správně vykreslí */
     margin: 10px auto; /* Vycentrování */
     z-index: 1002;
+    top: 5px;
 }
 
 /* Navigační menu */
