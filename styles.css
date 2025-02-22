@@ -152,3 +152,12 @@ pre {
 .copy-button:hover {
     background-color: #0056b3;
 }
+
+/* Styl pro obrázky v článku */
+.article-image {
+    width: 100%;        /* Obrázky se přizpůsobí šířce kontejneru */
+    height: auto;       /* Udržuje poměr stran */
+    max-width: 100%;    /* Zajistí, že obrázek nebude širší než 100% kontejneru */
+    display: block;     /* Zajistí, že obrázek nebude mít mezeru pod sebou */
+    margin: 0 auto;     /* Na střed, pokud obrázek není na celou šířku */
+}

@@ -58,6 +58,16 @@ clanky.forEach(clanek => {
         article.appendChild(popisek);
     }
 
+    if (clanek.images && clanek.images.length > 0) {
+        clanek.images.forEach(imagePath => {
+            const img = document.createElement("img");
+            img.src = imagePath;
+            img.alt = "Obrázek článku";
+            img.classList.add("article-image");
+            article.appendChild(img); // Použijeme správně 'article', ne 'articleDiv'
+        });
+    }
+
     clankyContainer.appendChild(article);
 });
 
