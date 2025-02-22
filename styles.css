@@ -54,7 +54,9 @@ nav#menu {
     position: fixed; /* Fixní umístění zajistí, že bude stále vlevo */
     left: 0;
     top: 40px;
+    bottom: 60px;
     z-index: 1000;
+    margin-top: -2px;
 }
 
 main#clanky {
@@ -95,11 +97,14 @@ nav#menu a:hover {
     color: #007acc;
 }
 
+/* Footer */
 footer {
     text-align: center;
-    padding: 10px 0;
+ 
     background: #333;
     color: #fff;
+    height: 50px; /* Výška footera */
+    z-index: 1001;
 }
 
 pre {
