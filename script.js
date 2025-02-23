@@ -51,13 +51,6 @@ clanky.forEach(clanek => {
         article.appendChild(iframe);
     }
 
-    if (clanek.popisek) {
-        const popisek = document.createElement("p");
-        popisek.className = "popisek";
-        popisek.textContent = clanek.popisek;
-        article.appendChild(popisek);
-    }
-
     if (clanek.images && clanek.images.length > 0) {
         clanek.images.forEach(imagePath => {
             const img = document.createElement("img");
@@ -68,7 +61,21 @@ clanky.forEach(clanek => {
         });
     }
 
+    if (clanek.popisek) {
+        const popisek = document.createElement("p");
+        popisek.className = "popisek";
+        popisek.textContent = clanek.popisek;
+        article.appendChild(popisek);
+    }
+
+   
+
     clankyContainer.appendChild(article);
+    // Po vygenerování článků aplikuj Highlight.js
+document.querySelectorAll('pre code').forEach((block) => {
+    hljs.highlightElement(block);
+});
+
 });
 
 // Funkce pro generování a filtrování menu

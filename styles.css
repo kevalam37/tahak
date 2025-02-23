@@ -130,13 +130,24 @@ pre {
 }
 
 .popisek {
-    font-style: italic;
+    
     color: #555;
 }
 
 .code-container {
     position: relative;
     margin-bottom: 20px;
+    pre {
+        background: #f4f4f4;
+        padding: 10px;
+        border-left: 4px solid #007acc;
+        white-space: pre-wrap;  /* Zalamování řádků podle šířky */
+        word-wrap: break-word;   /* Zajistí správné zalomení slov */
+        overflow-x: auto;        /* Přidá vodorovný posuvník, pokud je nutné */
+        font-family: monospace;
+        margin-bottom: 10px;
+    }
+    
 }
 
 .copy-button {
